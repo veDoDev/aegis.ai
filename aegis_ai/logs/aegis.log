@@ -971,3 +971,983 @@ Reshape your data either using array.reshape(-1, 1) if your data has a single fe
 [2026-04-04 00:46:35] [INFO] [aegis.api] [REQ-ff9b49d3] Verdict: suspicious | Score: 0.4
 [2026-04-04 00:46:35] [INFO] [aegis.api] [REQ-ff9b49d3] Reasons: ["Brand impersonation: 'amazon' in domain but not amazon.com"]
 [2026-04-04 00:46:35] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 00:53:08] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] ── New Detection Request ──
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] Client IP: 127.0.0.1
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCQ13SjoZQF7F9XpB
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] Input summary:
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe]   Email text: 60 chars | Preview: 'Verify your account now or it will be permanently suspended.'...
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe]   URLs provided: 0 → []
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe]   Sender: (not provided)
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe]   Attachments: 0 file(s)
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] ── Triggering Detection Pipeline ──
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 00:53:08] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 00:53:08] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 00:53:08] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (60 chars)
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] Total URLs for analysis: 0
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 00:53:08] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (60 chars)
+[2026-04-04 00:53:08] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 00:53:08] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.65, reasons=['Urgency language detected: suspended', 'Threatening language: permanently']
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] ← Text score: 0.65 | Reasons: 2
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 00:53:08] [INFO] [aegis.url] [url_analyzer.py] No URLs to analyze — returning score 0.0
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] ← URL score: 0.0 | Reasons: 0
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 00:53:08] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 00:53:08] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 00:53:08] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] ← Rule score: 0.45 | Reasons: 1
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] ← Fused score: 0.64
+[2026-04-04 00:53:08] [INFO] [aegis.engine] [REQ-7e3e1ebe] [engine.py] Final verdict: malicious (0.64)
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] ── Detection Complete ──
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] Verdict: malicious | Score: 0.64
+[2026-04-04 00:53:08] [INFO] [aegis.api] [REQ-7e3e1ebe] Reasons: ['Urgency language detected: suspended', 'Threatening language: permanently', 'Urgency combined with credential request — strong phishing signal']
+[2026-04-04 00:53:08] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 02:23:45] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 02:23:45] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 02:24:11] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 02:24:11] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 02:32:35] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 02:32:36] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 02:33:06] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (127 chars)
+[2026-04-04 02:33:06] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:33:06] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, suspended', 'Brand name reference: paypal', 'Threatening language: account will be, permanently', 'Click-bait pattern: click here', 'Generic greeting (common in phishing)']
+[2026-04-04 02:33:06] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:33:06] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:33:17] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-verify-login.com/auth']
+[2026-04-04 02:33:17] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-verify-login.com/auth'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:33:17] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:33:17] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=["Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: login, verify, auth', 'Hyphen-heavy domain: paypal-verify-login.com']
+[2026-04-04 02:33:30] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com']
+[2026-04-04 02:33:30] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:33:30] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:33:30] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:35:23] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 02:35:24] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 02:37:37] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:5173/report']
+[2026-04-04 02:37:37] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:5173/report'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:37:37] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:37:37] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:37:39] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1063 chars)
+[2026-04-04 02:37:39] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:37:39] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:37:39] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:37:39] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:38:21] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-auth-confirm.ru/verify.php?id=19673']
+[2026-04-04 02:38:21] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-auth-confirm.ru/verify.php?id=19673'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:38:21] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:38:21] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=['Hyphen-heavy domain: paypal-auth-confirm.ru', "Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: verify, confirm, auth']
+[2026-04-04 02:39:52] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:39:52] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:39:52] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:39:52] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:39:52] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:39:58] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/']
+[2026-04-04 02:39:58] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:39:58] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:39:58] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:39:59] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:39:59] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:39:59] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:39:59] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:39:59] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:40:00] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (179 chars)
+[2026-04-04 02:40:00] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:40:00] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.2, reasons=['Brand name reference: google']
+[2026-04-04 02:40:00] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:40:00] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:40:05] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/']
+[2026-04-04 02:40:05] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:40:05] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:40:05] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:40:47] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:40:47] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:40:47] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:40:47] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:40:47] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:40:50] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/']
+[2026-04-04 02:40:50] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:40:50] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:40:50] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:40:53] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-verify-login.secure-acc.com/']
+[2026-04-04 02:40:53] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-verify-login.secure-acc.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:40:53] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:40:53] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=['Hyphen-heavy domain: paypal-verify-login.secure-acc.com', "Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: login, verify, secure']
+[2026-04-04 02:40:54] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-verify-login.secure-acc.com/']
+[2026-04-04 02:40:54] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-verify-login.secure-acc.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:40:54] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:40:54] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=['Hyphen-heavy domain: paypal-verify-login.secure-acc.com', "Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: login, verify, secure']
+[2026-04-04 02:41:00] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/']
+[2026-04-04 02:41:00] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:41:00] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:41:00] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:41:04] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:41:04] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:41:04] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:41:04] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:41:04] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:41:09] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-verify-login.secure-acc.com/']
+[2026-04-04 02:41:09] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-verify-login.secure-acc.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:41:09] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:41:09] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=['Hyphen-heavy domain: paypal-verify-login.secure-acc.com', "Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: login, verify, secure']
+[2026-04-04 02:41:11] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:41:11] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:41:11] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:41:11] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:41:11] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:41:14] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://paypal-verify-login.secure-acc.com/']
+[2026-04-04 02:41:14] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://paypal-verify-login.secure-acc.com/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:41:14] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:41:14] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=1.0, reasons=['Hyphen-heavy domain: paypal-verify-login.secure-acc.com', "Brand impersonation: 'paypal' in domain but not paypal.com", 'Phishing keywords in URL: login, verify, secure']
+[2026-04-04 02:41:40] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (202 chars)
+[2026-04-04 02:41:40] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:41:40] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: verify your identity, bank account', 'Brand name reference: bank', 'Threatening language: permanently', 'Click-bait pattern: click here']
+[2026-04-04 02:41:40] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:41:40] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:41:40] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:42:54] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2']
+[2026-04-04 02:42:54] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:42:54] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:42:54] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:42:56] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (5000 chars)
+[2026-04-04 02:42:56] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:42:56] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.2, reasons=['Brand name reference: bank, paypal, microsoft']
+[2026-04-04 02:42:56] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:42:56] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:42:56] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLW5qc054aVphOXFKQ0JNMg5uanNOeGlaYTlxSkNCTToORkJpY2dOeWEzSFNKZE0gBCocCgZtb3NhaWMSEGUtbmpzTnhpWmE5cUpDQk0YADABGAcg-veN9QZKCBABGAEgASgB']
+[2026-04-04 02:42:56] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLW5qc054aVphOXFKQ0JNMg5uanNOeGlaYTlxSkNCTToORkJpY2dOeWEzSFNKZE0gBCocCgZtb3NhaWMSEGUtbmpzTnhpWmE5cUpDQk0YADABGAcg-veN9QZKCBABGAEgASgB'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:42:56] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:42:56] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (211 chars)']
+[2026-04-04 02:43:00] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:43:00] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:00] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:00] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:00] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2']
+[2026-04-04 02:43:06] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUFrcHJ3TEJ3bUNaQTNNMg5Ba3Byd0xCd21DWkEzTToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtQWtwcndMQndtQ1pBM00YADABGAcgmdS1-AVKCBABGAEgASgB']
+[2026-04-04 02:43:06] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUFrcHJ3TEJ3bUNaQTNNMg5Ba3Byd0xCd21DWkEzTToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtQWtwcndMQndtQ1pBM00YADABGAcgmdS1-AVKCBABGAEgASgB'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:06] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (211 chars)']
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2']
+[2026-04-04 02:43:10] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUg0dlFFZUF2WWtCTTlNMg5INHZRRWVBdllrQk05TToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtSDR2UUVlQXZZa0JNOU0YADABGAcgmav-lANKCBABGAEgASgB']
+[2026-04-04 02:43:10] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUg0dlFFZUF2WWtCTTlNMg5INHZRRWVBdllrQk05TToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtSDR2UUVlQXZZa0JNOU0YADABGAcgmav-lANKCBABGAEgASgB'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:10] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (211 chars)']
+[2026-04-04 02:43:18] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.libreoffice.org/download/download-libreoffice/']
+[2026-04-04 02:43:18] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.libreoffice.org/download/download-libreoffice/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:18] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:18] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (3448 chars)
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.4, reasons=['Brand name reference: apple', 'Click-bait pattern: download']
+[2026-04-04 02:43:20] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:20] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:20] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:20] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:20] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:20] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.libreoffice.org/donate/dl/win-x86_64/26.2.2/en-US/LibreOffice_26.2.2_Win_x86-64.msi']
+[2026-04-04 02:43:20] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.libreoffice.org/donate/dl/win-x86_64/26.2.2/en-US/LibreOffice_26.2.2_Win_x86-64.msi'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:20] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:20] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (95 chars)']
+[2026-04-04 02:43:24] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://download.documentfoundation.org/libreoffice/stable/26.2.2/win/x86_64/LibreOffice_26.2.2_Win_x86-64_helppack_en-US.msi']
+[2026-04-04 02:43:24] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://download.documentfoundation.org/libreoffice/stable/26.2.2/win/x86_64/LibreOffice_26.2.2_Win_x86-64_helppack_en-US.msi'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:24] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:24] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (125 chars)']
+[2026-04-04 02:43:25] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.libreoffice.org/donate/dl/win-x86_64/25.8.6/en-US/LibreOffice_25.8.6_Win_x86-64.msi']
+[2026-04-04 02:43:25] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.libreoffice.org/donate/dl/win-x86_64/25.8.6/en-US/LibreOffice_25.8.6_Win_x86-64.msi'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:25] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:25] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (95 chars)']
+[2026-04-04 02:43:29] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://download.documentfoundation.org/libreoffice/stable/25.8.6/win/x86_64/LibreOffice_25.8.6_Win_x86-64_helppack_en-US.msi']
+[2026-04-04 02:43:29] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://download.documentfoundation.org/libreoffice/stable/25.8.6/win/x86_64/LibreOffice_25.8.6_Win_x86-64_helppack_en-US.msi'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:29] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:29] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (125 chars)']
+[2026-04-04 02:43:30] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (11 chars)
+[2026-04-04 02:43:30] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:30] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:30] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:30] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:32] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (65 chars)
+[2026-04-04 02:43:32] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:32] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:32] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:32] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:36] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (11 chars)
+[2026-04-04 02:43:36] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:36] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:36] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:36] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:39] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (151 chars)
+[2026-04-04 02:43:39] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:39] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:39] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:39] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:41] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://download.documentfoundation.org/libreoffice/stable/26.2.2/win/x86_64/LibreOffice_26.2.2_Win_x86-64_sdk.msi']
+[2026-04-04 02:43:41] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://download.documentfoundation.org/libreoffice/stable/26.2.2/win/x86_64/LibreOffice_26.2.2_Win_x86-64_sdk.msi'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:41] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:41] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (114 chars)']
+[2026-04-04 02:43:45] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://opensource.adobe.com/dc-acrobat-sdk-docs/']
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (4498 chars)
+[2026-04-04 02:43:45] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://opensource.adobe.com/dc-acrobat-sdk-docs/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:45] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.85, reasons=['Request for credentials/sensitive info: password, pin', 'Brand name reference: microsoft, chase', 'Click-bait pattern: download']
+[2026-04-04 02:43:45] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:43:45] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:45] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:45] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:45] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:45] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:43:47] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (173 chars)
+[2026-04-04 02:43:47] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:43:47] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:43:47] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:43:47] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:44:03] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:44:03] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:44:03] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:44:03] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:44:03] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:45:27] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:45:27] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:45:27] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:45:27] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:45:27] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:45:31] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:45:31] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:45:31] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:45:31] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:45:31] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:45:36] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://opensource.adobe.com/dc-acrobat-sdk-docs/']
+[2026-04-04 02:45:36] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://opensource.adobe.com/dc-acrobat-sdk-docs/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:45:36] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:45:36] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:45:41] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://opensource.adobe.com/dc-acrobat-sdk-docs/']
+[2026-04-04 02:45:41] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://opensource.adobe.com/dc-acrobat-sdk-docs/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:45:41] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:45:41] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:45:43] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (4498 chars)
+[2026-04-04 02:45:43] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:45:43] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.85, reasons=['Request for credentials/sensitive info: password, pin', 'Brand name reference: microsoft, chase', 'Click-bait pattern: download']
+[2026-04-04 02:45:43] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:45:43] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:45:46] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:45:46] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:45:46] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:45:46] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:45:46] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:46:09] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2']
+[2026-04-04 02:46:09] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:09] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:09] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:46:10] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUFrcHJ3TEJ3bUNaQTNNMg5Ba3Byd0xCd21DWkEzTToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtQWtwcndMQndtQ1pBM00YADABGAcgmdS1-AVKCBABGAEgASgB']
+[2026-04-04 02:46:10] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLUFrcHJ3TEJ3bUNaQTNNMg5Ba3Byd0xCd21DWkEzTToOM19rSkZhMmdsRF91Y00gBCocCgZtb3NhaWMSEGUtQWtwcndMQndtQ1pBM00YADABGAcgmdS1-AVKCBABGAEgASgB'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:10] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:10] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (211 chars)']
+[2026-04-04 02:46:11] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (5000 chars)
+[2026-04-04 02:46:11] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:11] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.2, reasons=['Brand name reference: bank, paypal, microsoft']
+[2026-04-04 02:46:11] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:11] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:46:18] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (151 chars)
+[2026-04-04 02:46:18] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:18] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:46:18] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:18] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (649 chars)
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.35, reasons=['Brand name reference: chase', 'Generic greeting (common in phishing)']
+[2026-04-04 02:46:29] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:29] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:46:29] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.thesslstore.com/blog/phishing-email-examples-the-best-worst/']
+[2026-04-04 02:46:29] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.thesslstore.com/blog/phishing-email-examples-the-best-worst/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:29] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:29] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (5000 chars)
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:29] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: expire', 'Request for credentials/sensitive info: pin', 'Brand name reference: microsoft, google', 'Excessive capitalization detected']
+[2026-04-04 02:46:29] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:29] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:46:29] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:46:31] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://enterprise.verizon.com/resources/reports/2020-data-breach-investigations-report.pdf']
+[2026-04-04 02:46:31] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://enterprise.verizon.com/resources/reports/2020-data-breach-investigations-report.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:31] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:31] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (91 chars)']
+[2026-04-04 02:46:39] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (173 chars)
+[2026-04-04 02:46:39] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:39] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:46:39] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:39] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2']
+[2026-04-04 02:46:39] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLTdnSFltZlJpcXpsb3dNMg43Z0hZbWZSaXF6bG93TToOQ3M5V05sdFpwbjJnM00gBCocCgZtb3NhaWMSEGUtN2dIWW1mUmlxemxvd00YADABGAcgl6-XlQlKCBABGAEgASgB']
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:39] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/search?q=phishing+email+screenshot&udm=2#sv=CAMSVhoyKhBlLTdnSFltZlJpcXpsb3dNMg43Z0hZbWZSaXF6bG93TToOQ3M5V05sdFpwbjJnM00gBCocCgZtb3NhaWMSEGUtN2dIWW1mUmlxemxvd00YADABGAcgl6-XlQlKCBABGAEgASgB'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:46:39] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (211 chars)']
+[2026-04-04 02:46:41] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (4 chars)
+[2026-04-04 02:46:41] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:46:41] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.1, reasons=['Excessive capitalization detected']
+[2026-04-04 02:46:41] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:46:41] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:51:24] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://[::]:8080/']
+[2026-04-04 02:51:24] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://[::]:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:51:24] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:51:24] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:51:25] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:51:25] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:51:25] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:51:25] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:51:25] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:51:27] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://[::]:8080/']
+[2026-04-04 02:51:27] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://[::]:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:51:27] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:51:27] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:52:20] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 02:52:20] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:20] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:20] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:52:21] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:21] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1649 chars)
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:21] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:52:21] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:21] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:52:21] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf']
+[2026-04-04 02:52:23] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (85 chars)']
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 02:52:23] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:23] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 02:52:33] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://opensource.adobe.com/dc-acrobat-sdk-docs/']
+[2026-04-04 02:52:33] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://opensource.adobe.com/dc-acrobat-sdk-docs/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:33] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:33] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (889 chars)
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent, suspended', 'Request for credentials/sensitive info: verify your identity', 'Brand name reference: paypal', 'Threatening language: restricted']
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (4498 chars)
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.85, reasons=['Request for credentials/sensitive info: password, pin', 'Brand name reference: microsoft, chase', 'Click-bait pattern: download']
+[2026-04-04 02:52:40] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:40] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 02:52:40] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:40] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1649 chars)
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:40] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:52:40] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:52:44] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf']
+[2026-04-04 02:52:44] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:44] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:44] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (85 chars)']
+[2026-04-04 02:52:56] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 02:52:56] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:52:56] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:52:56] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:52:56] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:56] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 02:52:56] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:52:56] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:56] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:52:58] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (889 chars)
+[2026-04-04 02:52:58] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:52:58] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent, suspended', 'Request for credentials/sensitive info: verify your identity', 'Brand name reference: paypal', 'Threatening language: restricted']
+[2026-04-04 02:52:58] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:52:58] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:52:58] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:53:06] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 02:53:06] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:53:06] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:53:06] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 02:53:16] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 02:53:16] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:53:16] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:53:16] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:53:18] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1649 chars)
+[2026-04-04 02:53:18] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:53:18] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:53:18] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:53:18] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:53:18] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:53:19] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf']
+[2026-04-04 02:53:19] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:53:19] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:53:19] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (85 chars)']
+[2026-04-04 02:53:26] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 02:53:26] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:53:26] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:53:26] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:53:26] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:53:26] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:53:26] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:53:26] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 02:53:26] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:53:35] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (889 chars)
+[2026-04-04 02:53:35] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:53:35] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent, suspended', 'Request for credentials/sensitive info: verify your identity', 'Brand name reference: paypal', 'Threatening language: restricted']
+[2026-04-04 02:53:35] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:53:35] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:53:35] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:53:43] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:53:43] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:53:43] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:53:43] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:53:43] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:53:51] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1682 chars)
+[2026-04-04 02:53:51] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:53:51] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:53:51] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:53:51] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:53:51] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:57:52] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://opensource.adobe.com/dc-acrobat-sdk-docs/']
+[2026-04-04 02:57:52] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://opensource.adobe.com/dc-acrobat-sdk-docs/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:57:52] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:57:52] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:57:53] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 02:57:53] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:57:53] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:57:53] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:58:00] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 02:58:02] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 02:58:29] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 02:58:29] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:58:29] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:58:29] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 02:58:32] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1649 chars)
+[2026-04-04 02:58:32] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:58:32] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:58:32] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:58:32] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:58:32] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf']
+[2026-04-04 02:58:32] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (85 chars)']
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 02:58:32] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 02:58:32] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 02:58:50] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (889 chars)
+[2026-04-04 02:58:50] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:58:50] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent, suspended', 'Request for credentials/sensitive info: verify your identity', 'Brand name reference: paypal', 'Threatening language: restricted']
+[2026-04-04 02:58:50] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:58:50] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:58:50] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:59:22] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:59:22] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:59:22] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:59:22] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:59:22] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:59:25] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1702 chars)
+[2026-04-04 02:59:25] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:59:25] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 02:59:25] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:59:25] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 02:59:25] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 02:59:34] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:59:34] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:59:34] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:59:34] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:59:34] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 02:59:51] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 02:59:51] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 02:59:51] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 02:59:51] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 02:59:51] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:05:51] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:8080/']
+[2026-04-04 03:05:51] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:8080/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:05:51] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:05:51] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:05:53] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1649 chars)
+[2026-04-04 03:05:53] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:05:53] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 03:05:53] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:05:53] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 03:05:53] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf']
+[2026-04-04 03:05:54] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.15, reasons=['Suspiciously long URL (85 chars)']
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe']
+[2026-04-04 03:05:54] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://internal-bank-updates.com/downloads/URGENT_INVOICE.pdf.exe'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:05:54] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Phishing keywords in URL: update', 'Hyphen-heavy domain: internal-bank-updates.com', 'Possible character substitution/homoglyph attack']
+[2026-04-04 03:06:00] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 03:06:00] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:06:00] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:06:01] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:06:01] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:06:11] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (889 chars)
+[2026-04-04 03:06:11] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:06:11] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent, suspended', 'Request for credentials/sensitive info: verify your identity', 'Brand name reference: paypal', 'Threatening language: restricted']
+[2026-04-04 03:06:11] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:06:11] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 03:06:11] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 03:06:26] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 03:06:26] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:06:26] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:06:26] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:06:26] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:06:29] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1702 chars)
+[2026-04-04 03:06:29] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:06:29] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=1.0, reasons=['Urgency language detected: immediately, urgent', 'Request for credentials/sensitive info: bank account', 'Brand name reference: bank, paypal, google', 'Click-bait pattern: click here, download']
+[2026-04-04 03:06:29] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:06:29] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 03:06:29] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 03:06:51] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 03:06:51] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:06:51] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:06:51] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:06:51] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:07:06] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 03:07:06] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:07:06] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:07:06] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:07:06] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:10:11] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:5173/']
+[2026-04-04 03:10:11] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:5173/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:10:11] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:10:11] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:10:13] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:5173/report']
+[2026-04-04 03:10:13] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:5173/report'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:10:13] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:10:13] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:10:13] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (1063 chars)
+[2026-04-04 03:10:13] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:10:13] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:10:13] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:10:13] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:10:15] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (15 chars)
+[2026-04-04 03:10:15] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:10:15] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:10:15] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:10:15] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:10:36] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:5173/']
+[2026-04-04 03:10:36] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:5173/'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:10:36] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:10:36] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:10:38] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (2332 chars)
+[2026-04-04 03:10:38] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:10:38] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.4, reasons=['Request for credentials/sensitive info: pin']
+[2026-04-04 03:10:38] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:10:38] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.15, 0 reason(s) fired
+[2026-04-04 03:10:41] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://localhost:5173/report']
+[2026-04-04 03:10:41] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://localhost:5173/report'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:10:41] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:10:41] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:10:50] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] ── New Detection Request ──
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Client IP: 127.0.0.1
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryuBdYcIhbMtKeG9hS
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Input summary:
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009]   Email text: 0 chars | Preview: ''...
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009]   URLs provided: 0 → []
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009]   Sender: (not provided)
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009]   Attachments: 1 file(s)
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Processing attachment 1: malicious file.pdf (19436 bytes)
+[2026-04-04 03:10:50] [INFO] [aegis.preprocessor] [preprocessor.py] Extracting text from PDF: C:\Users\Siddhi\AppData\Local\Temp\tmptbe7h_tm.pdf
+[2026-04-04 03:10:50] [INFO] [aegis.preprocessor] [preprocessor.py] PDF extraction success: 209 chars
+[2026-04-04 03:10:50] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 1 URL(s) from text (203 chars)
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009]   PDF extracted: 203 chars, 1 URLs found
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] ── Triggering Detection Pipeline ──
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:10:50] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:10:50] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:10:50] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 1 URL(s) from text (203 chars)
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] Total URLs for analysis: 1
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:10:50] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (203 chars)
+[2026-04-04 03:10:50] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:10:50] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.9, reasons=['Request for credentials/sensitive info: pin', 'Brand name reference: amazon', 'Click-bait pattern: click the link']
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] ← Text score: 0.9 | Reasons: 3
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:10:50] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://amazon-rewards-center.com']
+[2026-04-04 03:10:50] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://amazon-rewards-center.com'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:10:50] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:10:50] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.65, reasons=['Hyphen-heavy domain: amazon-rewards-center.com', "Brand impersonation: 'amazon' in domain but not amazon.com"]
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] ← URL score: 0.65 | Reasons: 2
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:10:50] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:10:50] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] ← Rule score: 0.45 | Reasons: 1
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] ← Fused score: 0.89
+[2026-04-04 03:10:50] [INFO] [aegis.engine] [REQ-e21f3009] [engine.py] Final verdict: malicious (0.89)
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] ── Detection Complete ──
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Verdict: malicious | Score: 0.89
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Reasons: ['Request for credentials/sensitive info: pin', 'Brand name reference: amazon', 'Click-bait pattern: click the link', 'Hyphen-heavy domain: amazon-rewards-center.com', "Brand impersonation: 'amazon' in domain but not amazon.com", "Possible Amazon impersonation — URL doesn't match official domain"]
+[2026-04-04 03:10:50] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:10:50] [INFO] [aegis.api] [REQ-e21f3009] Cleaned up temp file: C:\Users\Siddhi\AppData\Local\Temp\tmptbe7h_tm.pdf
+[2026-04-04 03:10:59] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:10:59] [INFO] [aegis.api] [REQ-0f60fbc2] ── New Detection Request ──
+[2026-04-04 03:10:59] [INFO] [aegis.api] [REQ-0f60fbc2] Client IP: 127.0.0.1
+[2026-04-04 03:10:59] [INFO] [aegis.api] [REQ-0f60fbc2] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryIn3X0guqdFiWMQW4
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] Input summary:
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2]   Email text: 0 chars | Preview: ''...
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2]   URLs provided: 0 → []
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2]   Sender: (not provided)
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2]   Attachments: 1 file(s)
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] Processing attachment 1: Mini project ppt.pdf (2086065 bytes)
+[2026-04-04 03:11:00] [INFO] [aegis.preprocessor] [preprocessor.py] Extracting text from PDF: C:\Users\Siddhi\AppData\Local\Temp\tmp8e1n6hxi.pdf
+[2026-04-04 03:11:00] [INFO] [aegis.preprocessor] [preprocessor.py] PDF extraction success: 20 chars
+[2026-04-04 03:11:00] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (0 chars)
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2]   PDF extracted: 0 chars, 0 URLs found
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] ── Triggering Detection Pipeline ──
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:11:00] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:11:00] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:11:00] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (0 chars)
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] Total URLs for analysis: 0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:11:00] [INFO] [aegis.text] [text_analyzer.py] Empty text received — returning score 0.0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] ← Text score: 0.0 | Reasons: 0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:11:00] [INFO] [aegis.url] [url_analyzer.py] No URLs to analyze — returning score 0.0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] ← URL score: 0.0 | Reasons: 0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:11:00] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:11:00] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] ← Rule score: 0.0 | Reasons: 0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] ← Fused score: 0.0
+[2026-04-04 03:11:00] [INFO] [aegis.engine] [REQ-0f60fbc2] [engine.py] Final verdict: benign (0.0)
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] ── Detection Complete ──
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] Verdict: benign | Score: 0.0
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] Reasons: []
+[2026-04-04 03:11:00] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:11:00] [INFO] [aegis.api] [REQ-0f60fbc2] Cleaned up temp file: C:\Users\Siddhi\AppData\Local\Temp\tmp8e1n6hxi.pdf
+[2026-04-04 03:11:24] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] ── New Detection Request ──
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] Client IP: 127.0.0.1
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryATFg6AbZMt0roPcV
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] Input summary:
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a]   Email text: 135 chars | Preview: 'Hi John, your meeting with the project team is scheduled for tomorrow at 10 AM. '...
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a]   URLs provided: 0 → []
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a]   Sender: (not provided)
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a]   Attachments: 0 file(s)
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] ── Triggering Detection Pipeline ──
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:11:24] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:11:24] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:11:24] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (135 chars)
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] Total URLs for analysis: 0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:11:24] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (135 chars)
+[2026-04-04 03:11:24] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:11:24] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.0, reasons=[]
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] ← Text score: 0.0 | Reasons: 0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:11:24] [INFO] [aegis.url] [url_analyzer.py] No URLs to analyze — returning score 0.0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] ← URL score: 0.0 | Reasons: 0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:11:24] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:11:24] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] ← Rule score: 0.0 | Reasons: 0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] ← Fused score: 0.0
+[2026-04-04 03:11:24] [INFO] [aegis.engine] [REQ-a926208a] [engine.py] Final verdict: benign (0.0)
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] ── Detection Complete ──
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] Verdict: benign | Score: 0.0
+[2026-04-04 03:11:24] [INFO] [aegis.api] [REQ-a926208a] Reasons: []
+[2026-04-04 03:11:24] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:11:52] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] ── New Detection Request ──
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] Client IP: 127.0.0.1
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryNjhywiHZiE6ZlKus
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] Input summary:
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554]   Email text: 60 chars | Preview: 'Verify your account now or it will be permanently suspended.'...
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554]   URLs provided: 0 → []
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554]   Sender: (not provided)
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554]   Attachments: 0 file(s)
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] ── Triggering Detection Pipeline ──
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:11:52] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:11:52] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:11:52] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (60 chars)
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] Total URLs for analysis: 0
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:11:52] [INFO] [aegis.text] [text_analyzer.py] Analyzing text (60 chars)
+[2026-04-04 03:11:52] [INFO] [aegis.text] [text_analyzer.py] → Triggering: core/text_analyzer_fallback.py → fallback_text_analyze()
+[2026-04-04 03:11:52] [INFO] [aegis.text] [text_analyzer.py] ← Result: score=0.65, reasons=['Urgency language detected: suspended', 'Threatening language: permanently']
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] ← Text score: 0.65 | Reasons: 2
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:11:52] [INFO] [aegis.url] [url_analyzer.py] No URLs to analyze — returning score 0.0
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] ← URL score: 0.0 | Reasons: 0
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:11:52] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:11:52] [INFO] [aegis.rules] [rule_engine.py] Rule 3 fired: urgency + credentials combo (+0.45)
+[2026-04-04 03:11:52] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.45, 1 reason(s) fired
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] ← Rule score: 0.45 | Reasons: 1
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] ← Fused score: 0.64
+[2026-04-04 03:11:52] [INFO] [aegis.engine] [REQ-ea52e554] [engine.py] Final verdict: malicious (0.64)
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] ── Detection Complete ──
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] Verdict: malicious | Score: 0.64
+[2026-04-04 03:11:52] [INFO] [aegis.api] [REQ-ea52e554] Reasons: ['Urgency language detected: suspended', 'Threatening language: permanently', 'Urgency combined with credential request — strong phishing signal']
+[2026-04-04 03:11:52] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:10] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] ── New Detection Request ──
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] Client IP: 127.0.0.1
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCAIm1Frz1Aki1mtp
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] Input summary:
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85]   Email text: 0 chars | Preview: ''...
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85]   URLs provided: 1 → ['http://billing-secure-account.ru/account/login']
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85]   Sender: (not provided)
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85]   Attachments: 0 file(s)
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] ── Triggering Detection Pipeline ──
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:12:10] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:12:10] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:12:10] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (0 chars)
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] Total URLs for analysis: 1
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:12:10] [INFO] [aegis.text] [text_analyzer.py] Empty text received — returning score 0.0
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] ← Text score: 0.0 | Reasons: 0
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:12:10] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['http://billing-secure-account.ru/account/login']
+[2026-04-04 03:12:10] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['http://billing-secure-account.ru/account/login'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:12:10] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:12:10] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.75, reasons=['Phishing keywords in URL: login, secure, account', 'Hyphen-heavy domain: billing-secure-account.ru']
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] ← URL score: 0.75 | Reasons: 2
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:12:10] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:12:10] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] ← Rule score: 0.0 | Reasons: 0
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] ← Fused score: 0.75
+[2026-04-04 03:12:10] [INFO] [aegis.engine] [REQ-fcd2ef85] [engine.py] Final verdict: malicious (0.75)
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] ── Detection Complete ──
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] Verdict: malicious | Score: 0.75
+[2026-04-04 03:12:10] [INFO] [aegis.api] [REQ-fcd2ef85] Reasons: ['Phishing keywords in URL: login, secure, account', 'Hyphen-heavy domain: billing-secure-account.ru']
+[2026-04-04 03:12:10] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:23] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] ── New Detection Request ──
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] Client IP: 127.0.0.1
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryp1yTXBKFBu7idOe8
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] Input summary:
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f]   Email text: 0 chars | Preview: ''...
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f]   URLs provided: 10 → ['Verify', 'your', 'account']
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f]   Sender: (not provided)
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f]   Attachments: 0 file(s)
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] ── Triggering Detection Pipeline ──
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:12:23] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:12:23] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:12:23] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (0 chars)
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] Total URLs for analysis: 10
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:12:23] [INFO] [aegis.text] [text_analyzer.py] Empty text received — returning score 0.0
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] ← Text score: 0.0 | Reasons: 0
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:12:23] [INFO] [aegis.url] [url_analyzer.py] Analyzing 10 URL(s): ['it', 'now', 'or']
+[2026-04-04 03:12:23] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['it'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:12:23] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:12:23] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.2, reasons=['Phishing keywords in URL: account', 'Phishing keywords in URL: verify', 'Phishing keywords in URL: suspend']
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] ← URL score: 0.2 | Reasons: 3
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:12:23] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:12:23] [INFO] [aegis.rules] [rule_engine.py] Rule 2 fired: excessive URLs (10) (+0.25)
+[2026-04-04 03:12:23] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.25, 1 reason(s) fired
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] ← Rule score: 0.25 | Reasons: 1
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] ← Fused score: 0.22
+[2026-04-04 03:12:23] [INFO] [aegis.engine] [REQ-fc9ea97f] [engine.py] Final verdict: benign (0.22)
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] ── Detection Complete ──
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] Verdict: benign | Score: 0.22
+[2026-04-04 03:12:23] [INFO] [aegis.api] [REQ-fc9ea97f] Reasons: ['Phishing keywords in URL: account', 'Phishing keywords in URL: verify', 'Phishing keywords in URL: suspend', 'Excessive URLs in content (10 found)']
+[2026-04-04 03:12:23] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:44] [INFO] [aegis.api] ════════════════════════════════════════════════════════════
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] ── New Detection Request ──
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] Client IP: 127.0.0.1
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] Content-Type: multipart/form-data; boundary=----WebKitFormBoundarypBqN2oMZoHWBCQOc
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] Input summary:
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9]   Email text: 0 chars | Preview: ''...
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9]   URLs provided: 1 → ['https://www.google.com/docs']
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9]   Sender: (not provided)
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9]   Attachments: 0 file(s)
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] ── Triggering Detection Pipeline ──
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] → core/engine.py → PhishingEngine.detect()
+[2026-04-04 03:12:44] [INFO] [aegis.text] [text_analyzer.py] TextAnalyzer initialized (heuristic mode)
+[2026-04-04 03:12:44] [INFO] [aegis.url] ✅ URL ML model loaded successfully
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] Running preprocessor → extract_urls_from_text()
+[2026-04-04 03:12:44] [INFO] [aegis.preprocessor] [preprocessor.py] Extracted 0 URL(s) from text (0 chars)
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] Total URLs for analysis: 1
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] → Triggering: core/text_analyzer.py → TextAnalyzer.analyze()
+[2026-04-04 03:12:44] [INFO] [aegis.text] [text_analyzer.py] Empty text received — returning score 0.0
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] ← Text score: 0.0 | Reasons: 0
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] → Triggering: core/url_analyzer.py → URLAnalyzer.analyze()
+[2026-04-04 03:12:44] [INFO] [aegis.url] [url_analyzer.py] Analyzing 1 URL(s): ['https://www.google.com/docs']
+[2026-04-04 03:12:44] [ERROR] [aegis.url] [url_analyzer.py] ML prediction failed: Expected 2D array, got 1D array instead:
+array=['https://www.google.com/docs'].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.. Falling back to heuristics.
+[2026-04-04 03:12:44] [INFO] [aegis.url] [url_analyzer.py] → Triggering: core/url_analyzer_fallback.py → fallback_url_analyze()
+[2026-04-04 03:12:44] [INFO] [aegis.url] [url_analyzer.py] ← Heuristic Result: score=0.0, reasons=[]
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] ← URL score: 0.0 | Reasons: 0
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] → Triggering: core/rule_engine.py → RuleEngine.analyze()
+[2026-04-04 03:12:44] [INFO] [aegis.rules] [rule_engine.py] Running deterministic rule analysis
+[2026-04-04 03:12:44] [INFO] [aegis.rules] [rule_engine.py] Rules complete → score=0.0, 0 reason(s) fired
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] ← Rule score: 0.0 | Reasons: 0
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] → Triggering: core/fusion.py → fuse_scores()
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] ← Fused score: 0.0
+[2026-04-04 03:12:44] [INFO] [aegis.engine] [REQ-d2e7bcf9] [engine.py] Final verdict: benign (0.0)
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] ── Detection Complete ──
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] Verdict: benign | Score: 0.0
+[2026-04-04 03:12:44] [INFO] [aegis.api] [REQ-d2e7bcf9] Reasons: []
+[2026-04-04 03:12:44] [INFO] [aegis.api] ════════════════════════════════════════════════════════════

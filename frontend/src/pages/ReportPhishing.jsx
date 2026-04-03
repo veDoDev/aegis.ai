@@ -548,7 +548,21 @@ Verdict: ${res.verdict}, Confidence: ${Math.round(res.confidence_score * 100)}%,
                             )}
                         </button>
                         {result && (
-                            <button onClick={resetDashboard} className="btn" style={{ border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.6)' }}>
+                            <button onClick={resetDashboard} style={{
+                                padding: '0.75rem 1.5rem',
+                                background: 'rgba(255,255,255,0.03)',
+                                border: '1px solid rgba(0,240,255,0.25)',
+                                borderRadius: '8px',
+                                color: 'rgba(0,240,255,0.7)',
+                                fontFamily: 'Orbitron, sans-serif',
+                                fontSize: '0.8rem',
+                                letterSpacing: '2px',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease',
+                            }}
+                            onMouseEnter={e => { e.target.style.background = 'rgba(0,240,255,0.08)'; e.target.style.borderColor = 'rgba(0,240,255,0.5)'; e.target.style.color = '#00f0ff'; }}
+                            onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.03)'; e.target.style.borderColor = 'rgba(0,240,255,0.25)'; e.target.style.color = 'rgba(0,240,255,0.7)'; }}
+                            >
                                 RESET
                             </button>
                         )}
