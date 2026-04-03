@@ -20,17 +20,21 @@ from django.urls import path, include
 from django.http import JsonResponse
 from django.conf import settings
 from django.conf.urls.static import static
-
 from django.shortcuts import render
 
-# Simple homepage
+# Primary View for React Platform
 def home_view(request):
     return render(request, 'index.html')
+
+# Remote testing view preserved
+def test_api_view(request):
+    return render(request, 'test_api.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('', home_view, name='home'),           # ← This fixes the 404 at root
+    path('test-api/', test_api_view, name='test_api'), # New path for the remote utility
+    path('', home_view, name='home'),                # Main React platform
 ]
 
 if settings.DEBUG:
