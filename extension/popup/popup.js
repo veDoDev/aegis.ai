@@ -176,6 +176,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('connectionStatus').classList.add('error');
     }
 
+    // ─── Network Isolation UI ───────────────────────────────────
+    let isolationInterval;
+    function checkIsolation() {
+        chrome.storage.local.get(['isolationActive', 'isolationStartTime'], (data) => {
+            const overlay = document.getElementById('isolationOverlay');
+            const timer = document.getElementById('countdownTimer');
+            
+            if (!overlay || !timer) return; // Fail-safe
+            
+            if (data.isolationActive && data.isolationStartTime) {
+                overlay.classList.remove('hidden');
+                
+                if (isolationInterval) clearInterval(isolationInterval);
+                
+                isolationInterval = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - data.isolationStartTime) / 1000);
+                    const remaining = Math.max(0, 120 - elapsed);
+                    
+                    timer.textContent = remaining;
+                    
+                    if (remaining <= 0) {
+                        clearInterval(isolationInterval);
+                        chrome.storage.local.set({ isolationActive: false });
+                        overlay.classList.add('hidden');
+                    }
+                }, 1000);
+            } else {
+                overlay.classList.add('hidden');
+                if (isolationInterval) clearInterval(isolationInterval);
+            }
+        });
+    }
+
+    // Check on load and when storage changes
+    checkIsolation();
+    chrome.storage.onChanged.addListener((changes) => {
+        if (changes.isolationActive) checkIsolation();
+    });
+
     // ─── URL Scan ───────────────────────────────────────────────
     const scanUrlBtn = document.getElementById('scanUrlBtn');
     const urlResult = document.getElementById('urlResult');

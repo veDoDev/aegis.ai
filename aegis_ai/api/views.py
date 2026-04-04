@@ -2,6 +2,7 @@ import logging
 import uuid
 import os
 import tempfile
+import requests
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -17,6 +18,22 @@ from core.preprocessor import extract_pdf_text, extract_urls_from_text
 
 logger = logging.getLogger('aegis.api')
 
+def trigger_isolation(request_id, score, verdict):
+    """Notify the local agent to isolate network for critical threats"""
+    agent_url = "http://127.0.0.1:5001/isolate"
+    try:
+        logger.info(f"[REQ-{request_id}] Triggering Network Isolation (Score: {score})")
+        response = requests.post(agent_url, json={
+            "request_id": request_id,
+            "score": score,
+            "verdict": verdict
+        }, timeout=2)
+        if response.status_code == 200:
+            logger.info(f"[REQ-{request_id}] Isolation successfully triggered via Agent.")
+        else:
+            logger.warning(f"[REQ-{request_id}] Agent returned error: {response.text}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"[REQ-{request_id}] Could not connect to local agent: {e}")
 
 @method_decorator(csrf_exempt, name='dispatch')
 class PhishingDetectView(APIView):
@@ -103,6 +120,15 @@ class PhishingDetectView(APIView):
             logger.info(f"[REQ-{request_id}] ── Detection Complete ──")
             logger.info(f"[REQ-{request_id}] Verdict: {result['verdict']} | Score: {result['confidence_score']}")
             logger.info(f"[REQ-{request_id}] Reasons: {result['reasons']}")
+
+            # Trigger Network Isolation for Critical Threats
+            # risk_score >= 0.9 or risk_level == "CRITICAL" (malicious in our engine)
+            if result['confidence_score'] >= 0.9 or result['verdict'] == 'malicious':
+                trigger_isolation(request_id, result['confidence_score'], result['verdict'])
+                result['isolation_triggered'] = True
+            else:
+                result['isolation_triggered'] = False
+
             logger.info("═" * 60)
 
             return Response(result, status=status.HTTP_200_OK)
