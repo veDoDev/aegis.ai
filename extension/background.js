@@ -47,6 +47,25 @@ async function analyzeImage(imageUrl) {
     return resp.json();
 }
 
+// ─── Network Isolation Trigger ──────────────────────────────────────
+async function triggerIsolation(result) {
+    // Only trigger for High/Critical threats
+    if (result.risk_level === 'HIGH' || result.risk_level === 'CRITICAL' || result.prediction === 'Malicious') {
+        try {
+            console.warn('[PhishGuard] Critical threat! Triggering network isolation...');
+            await fetch('http://127.0.0.1:5001/isolate', {
+                method: 'POST',
+                mode: 'no-cors' // Agent is local and doesn't need full CORS for this fire-and-forget call
+            });
+            
+            // Notify popup/content that isolation is active
+            chrome.storage.local.set({ isolationActive: true, isolationStartTime: Date.now() });
+        } catch (e) {
+            console.error('[PhishGuard] Failed to reach local agent for isolation:', e.message);
+        }
+    }
+}
+
 // ─── Message Handler ────────────────────────────────────────────────
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const { action, data } = message;
@@ -85,6 +104,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 default:
                     result = { error: `Unknown action: ${action}` };
             }
+
+            // Trigger isolation check
+            if (result && !result.error) {
+                triggerIsolation(result);
+            }
+
             sendResponse({ success: true, data: result });
         } catch (error) {
             console.error('[PhishGuard] Background error:', error);
@@ -124,6 +149,9 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
                 text: result.risk_level === 'LOW' ? '✓' : '!',
                 tabId,
             });
+
+            // Trigger isolation for auto-scan results
+            triggerIsolation(result);
         } catch (e) {
             // Backend might not be running — silent fail
             console.warn('[PhishGuard] Auto-scan failed:', e.message);
