@@ -1,6 +1,4 @@
 frontend/.env
 aegis_ai/logs/
 **/__pycache__/
-*.pyc
-*.pyo
-.env
+aegis_ai/.env
