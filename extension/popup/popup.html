@@ -100,5 +100,18 @@
     </footer>
 
     <script src="popup.js"></script>
+
+    <!-- ─── Isolation Overlay ────────────────────────────────── -->
+    <div id="isolationOverlay" class="isolation-overlay hidden">
+        <div class="isolation-content">
+            <div class="isolation-icon">🛑</div>
+            <h2>CRITICAL THREAT</h2>
+            <p>Network isolation triggered for your protection.</p>
+            <div class="countdown-container">
+                <span id="countdownTimer">120</span>s
+            </div>
+            <p class="restoring-text">Restoring network automatically...</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -535,3 +535,73 @@ footer strong {
     background: rgba(0,240,255,0.2);
     border-radius: 4px;
 }
+/* ─── Isolation Overlay ───────────────────────────────────── */
+.isolation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 26, 0.98);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    animation: fadeIn 0.4s ease;
+}
+
+.isolation-content {
+    width: 100%;
+}
+
+.isolation-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: alertPulse 1s infinite alternate;
+}
+
+@keyframes alertPulse {
+    from { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,51,51,0.5)); }
+    to { transform: scale(1.15); filter: drop-shadow(0 0 30px rgba(255,51,51,0.9)); }
+}
+
+.isolation-content h2 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--danger);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.isolation-content p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.countdown-container {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.restoring-text {
+    font-size: 11px !important;
+    font-weight: 600;
+    color: var(--accent) !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
