@@ -47,6 +47,27 @@ async function analyzeImage(imageUrl) {
     return resp.json();
 }
 
+async function analyzeAttachment(fileData, fileName) {
+    const apiUrl = await getApiUrl();
+    // Convert base64 back to blob
+    const byteChars = atob(fileData);
+    const byteArr = new Uint8Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) {
+        byteArr[i] = byteChars.charCodeAt(i);
+    }
+    const blob = new Blob([byteArr]);
+
+    const formData = new FormData();
+    formData.append('email_text', `Attachment analysis: ${fileName}`);
+    formData.append('attachments', blob, fileName);
+
+    const resp = await fetch(`${apiUrl}/api/detect/`, {
+        method: 'POST',
+        body: formData,
+    });
+    return resp.json();
+}
+
 // ─── Message Handler ────────────────────────────────────────────────
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const { action, data } = message;
@@ -81,6 +102,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     // Return current tab URL
                     const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
                     result = { url: activeTab?.url || '', title: activeTab?.title || '' };
+                    break;
+                case 'analyzeAttachment':
+                    result = await analyzeAttachment(data.fileData, data.fileName);
                     break;
                 default:
                     result = { error: `Unknown action: ${action}` };
